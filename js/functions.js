@@ -56,7 +56,7 @@ function getHeartPoint(angle) {
 function drawBackground() {
 	var ctx = horseCtx;
 	var img = new Image();
-	img.src = "img/2.jpg";
+	img.src = "img/2.png";
 	var cwidth = gardenCanvas.width;
 	var cheight = gardenCanvas.height;
 	
