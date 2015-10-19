@@ -99,7 +99,11 @@ Bloom.prototype = {
         var angle = 360 / this.pc;
         var startAngle = Garden.randomInt(0, 90);
         for (var i = 0; i < this.pc; i++) {
-            this.petals.push(new Petal(Garden.random(Garden.options.petalStretch.min, Garden.options.petalStretch.max), Garden.random(Garden.options.petalStretch.min, Garden.options.petalStretch.max), startAngle + i * angle, angle, Garden.random(Garden.options.growFactor.min, Garden.options.growFactor.max), this));
+            this.petals.push(new Petal(Garden.random(Garden.options.petalStretch.min, Garden.options.petalStretch.max), 
+                                       Garden.random(Garden.options.petalStretch.min, Garden.options.petalStretch.max), 
+                                       startAngle + i * angle, angle, 
+                                       Garden.random(Garden.options.growFactor.min, Garden.options.growFactor.max), 
+                                       this));
         }
     }
 }
@@ -129,9 +133,15 @@ Garden.prototype = {
         }
     },
     createRandomBloom: function (x, y) {
-        this.createBloom(x, y, Garden.randomInt(Garden.options.bloomRadius.min, Garden.options.bloomRadius.max), Garden.randomrgba(Garden.options.color.rmin, Garden.options.color.rmax, Garden.options.color.gmin, Garden.options.color.gmax, Garden.options.color.bmin, Garden.options.color.bmax, Garden.options.color.opacity), Garden.randomInt(Garden.options.petalCount.min, Garden.options.petalCount.max));
+        this.createBloom(x, y, 
+            Garden.randomInt(Garden.options.bloomRadius.min, Garden.options.bloomRadius.max), 
+            Garden.randomrgba(Garden.options.color.rmin, Garden.options.color.rmax, Garden.options.color.gmin, Garden.options.color.gmax, Garden.options.color.bmin, Garden.options.color.bmax, Garden.options.color.opacity), 
+            Garden.randomInt(Garden.options.petalCount.min, Garden.options.petalCount.max));
     },
     createBloom: function (x, y, r, c, pc) {
+        //r bloomRadius
+        //c color
+        //pc petalCount
         new Bloom(new Vector(x, y), r, c, pc, this);
     },
     clear: function () {

@@ -1,7 +1,8 @@
 // variables
-var $window = $(window), gardenCtx, gardenCanvas, $garden, garden;
+var $window = $(window), gardenCtx, gardenCanvas, $garden, garden, horseCanvas, $horse, horseCtx;
 var clientWidth = $(window).width();
 var clientHeight = $(window).height();
+var points = [];
 
 $(function () {
     // setup garden
@@ -9,12 +10,22 @@ $(function () {
 	var offsetX = $loveHeart.width() / 2;
 	var offsetY = $loveHeart.height() / 2 - 55;
     $garden = $("#garden");
+    $horse = $('#horse');
+
     gardenCanvas = $garden[0];
 	gardenCanvas.width = $("#loveHeart").width();
-    gardenCanvas.height = $("#loveHeart").height()
+    gardenCanvas.height = $("#loveHeart").height();
+
+    horseCanvas = $horse[0];
+    horseCanvas.width = gardenCanvas.width;
+    horseCanvas.height = gardenCanvas.height;
+
     gardenCtx = gardenCanvas.getContext("2d");
     gardenCtx.globalCompositeOperation = "lighter";
     garden = new Garden(gardenCtx, gardenCanvas);
+
+    horseCtx = horseCanvas.getContext("2d");
+
 	
 	$("#content").css("width", $loveHeart.width() + $("#code").width());
 	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
@@ -42,12 +53,50 @@ function getHeartPoint(angle) {
 	return new Array(offsetX + x, offsetY + y);
 }
 
+function drawBackground() {
+	var ctx = horseCtx;
+	var img = new Image();
+	img.src = "img/2.jpg";
+	var cwidth = gardenCanvas.width;
+	var cheight = gardenCanvas.height;
+	
+	img.onload = function () {
+		var scale = Math.max((cwidth / img.width), (cheight / img.height));
+		var alpha = 0.1;
+
+		var bgInterval = setInterval(function () {
+		    ctx.clearRect(0, 0, cwidth, cheight);
+			ctx.save();
+			ctx.moveTo(points[0][0], points[0][1]);
+			ctx.beginPath();
+			for(var i = 1; i < points.length; i ++ ){
+				ctx.lineTo(points[i][0], points[i][1]);
+			}
+			ctx.lineTo(points[0][0], points[0][1]);
+			ctx.clip();
+			ctx.globalAlpha = alpha;
+			ctx.drawImage(img, 
+					0, 0, img.width, img.height,
+					(cwidth - img.width * scale) / 2, (cheight - img.height * scale) / 2,
+	                img.width * scale, img.height * scale);
+			ctx.restore();
+
+			alpha += 0.02;
+			if (alpha >= 1) {
+				clearInterval(bgInterval);
+			}
+		}, 200);
+		
+	}
+}
+
 function startHeartAnimation() {
 	var interval = 50;
 	var angle = 10;
 	var heart = new Array();
 	var animationTimer = setInterval(function () {
 		var bloom = getHeartPoint(angle);
+		points.push(bloom);
 		var draw = true;
 		for (var i = 0; i < heart.length; i++) {
 			var p = heart[i];
@@ -63,34 +112,13 @@ function startHeartAnimation() {
 		}
 		if (angle >= 30) {
 			clearInterval(animationTimer);
+			drawBackground();
 			showMessages();
 		} else {
 			angle += 0.2;
 		}
 	}, interval);
 }
-
-(function($) {
-	$.fn.typewriter = function() {
-		this.each(function() {
-			var $ele = $(this), str = $ele.html(), progress = 0;
-			$ele.html('');
-			var timer = setInterval(function() {
-				var current = str.substr(progress, 1);
-				if (current == '<') {
-					progress = str.indexOf('>', progress) + 1;
-				} else {
-					progress++;
-				}
-				$ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
-				if (progress >= str.length) {
-					clearInterval(timer);
-				}
-			}, 75);
-		});
-		return this;
-	};
-})(jQuery);
 
 function timeElapse(date){
 	var current = Date();
@@ -116,9 +144,9 @@ function timeElapse(date){
 
 function showMessages() {
 	adjustWordsPosition();
-	$('#messages').fadeIn(5000, function() {
-		showLoveU();
-	});
+	// $('#messages').fadeIn(5000, function() {
+	// 	showLoveU();
+	// });
 }
 
 function adjustWordsPosition() {
