@@ -5,13 +5,12 @@
 	 <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, maximum-scale=1, user-scalable=no"/>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<style type="text/css">
-		@font-face {
-			font-family: digit;
-			src: url('digital-7_mono.ttf') format("truetype");
-		}
 		#horse {
 			position: absolute;
 			z-index: -1;
+		}
+		#title {
+			color: #AD8F8F;
 		}
 	</style>
 	<link href="css/default.css" type="text/css" rel="stylesheet">
@@ -29,7 +28,10 @@
 				<canvas id="garden"></canvas>
 			</div>
 		</div>
-		<div>test</div>
+		<div>
+			<h2 id="title">温盛章&amp;高超</h2>
+			<div>2015年11月14日 晚 @ 瑞安市葡萄园大酒店</div>
+		</div>
 
 	</div>
 	<script type="text/javascript">
@@ -45,7 +47,7 @@
 		if (!document.createElement('canvas').getContext) {
 			var msg = document.createElement("div");
 			msg.id = "errorMsg";
-			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
 			document.body.appendChild(msg);
 			$("#code").css("display", "none")
 			$("#copyright").css("position", "absolute");

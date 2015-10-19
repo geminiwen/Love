@@ -80,7 +80,7 @@ function drawBackground() {
 	                img.width * scale, img.height * scale);
 			ctx.restore();
 
-			alpha += 0.02;
+			alpha += 0.04;
 			if (alpha >= 1) {
 				clearInterval(bgInterval);
 			}
