@@ -29,8 +29,7 @@ $(function () {
 	
 	$("#content").css("width", $loveHeart.width() + $("#code").width());
 	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-	$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2, 10));
-	$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
+	$("#content").css("margin-top", 20);
 
     // renderLoop
     setInterval(function () {
@@ -48,8 +47,8 @@ $(window).resize(function() {
 
 function getHeartPoint(angle) {
 	var t = angle / Math.PI;
-	var x = 19.5 * (16 * Math.pow(Math.sin(t), 3));
-	var y = - 20 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+	var x = 8* (16 * Math.pow(Math.sin(t), 3));
+	var y = - 8 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
 	return new Array(offsetX + x, offsetY + y);
 }
 
@@ -61,7 +60,7 @@ function drawBackground() {
 	var cheight = gardenCanvas.height;
 	
 	img.onload = function () {
-		var scale = Math.max((cwidth / img.width), (cheight / img.height));
+		var scale = Math.min((cwidth / img.width), (cheight / img.height));
 		var alpha = 0.1;
 
 		var bgInterval = setInterval(function () {
