@@ -3,6 +3,11 @@
  */
 $(function () {
 
+    $("#detail-btn").click(function () {
+        nextPage();
+    });
+
+
     var nextPage = function () {
         var index = $('.current').index();
         var $next = $(".screen").get(index);
@@ -27,7 +32,4 @@ $(function () {
 
     };
 
-    $("#detail-btn").click(function () {
-        nextPage();
-    })
 });
