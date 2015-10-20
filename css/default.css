@@ -11,9 +11,15 @@ body {
 	margin: 0 auto;
 }
 
-#mainDiv{
+.screen {
 	width: 100%;
 	height: 100%;
+	position: absolute;
+	display: none;
+}
+
+.current {
+	display: block;
 }
 
 #loveHeart {
