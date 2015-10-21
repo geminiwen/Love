@@ -174,36 +174,36 @@ ul {
 
 .arrow {
     position: absolute;
-    bottom: 10px;
+    bottom: 35px;
     left: 50%;
     z-index: 150;
-    width: 24px;
-    height: 14px;
-    margin-left: -7px;
+    width: 48px;
+    height: 28px;
+    transform: translateX(-50%);
 }
 
 .pre-wrap {
-    width: 24px;
-    height: 14px;
+    width: 48px;
+    height: 28px;
     position: relative;
     animation: start 1.5s infinite ease-in-out;
 }
 
 .pre1, .pre2 {
     background-color: #fff;
-    width: 14px;
-    height: 5px;
+    width: 28px;
+    height: 10px;
     border-radius: 2px;
     position: absolute;
     box-shadow: 1px -1px 1px #646464;
-    top: 5px;
+    top: 10px;
 }
 
 .pre-box1, .pre-box2 {
-    height: 15px;
-    width: 11px;
+    height: 30px;
+    width: 33px;
     position: absolute;
-    top: -5px;
+    top: 10px;
     overflow: hidden;
 }
 
@@ -217,7 +217,7 @@ ul {
 }
 
 .pre2 {
-    left: -4.5px;
+    left: 3px;
     transform: rotate(50deg);
 }
 
