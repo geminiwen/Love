@@ -7,8 +7,6 @@ var points = [];
 $(function () {
     // setup garden
 	$loveHeart = $("#loveHeart");
-	var offsetX = $loveHeart.width() / 2;
-	var offsetY = $loveHeart.height() / 2 - 55;
     $garden = $("#garden");
     $horse = $('#horse');
 
@@ -29,7 +27,7 @@ $(function () {
 	
 	$("#content").css("width", $loveHeart.width() + $("#code").width());
 	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-	$("#content").css("margin-top", 20);
+	$("#content").css("margin-top", 5);
 
     // renderLoop
     setInterval(function () {
@@ -49,7 +47,7 @@ function getHeartPoint(angle) {
 	var t = angle / Math.PI;
 	var x = 8* (16 * Math.pow(Math.sin(t), 3));
 	var y = - 8 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-	return new Array(offsetX + x, offsetY + y);
+	return [offsetX + x, offsetY + y];
 }
 
 function drawBackground() {
@@ -137,7 +135,7 @@ function timeElapse(date){
 	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
-	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	var result = "<span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分钟 <span class=\"digit\">" + seconds + "</span> 秒";
 	$("#elapseClock").html(result);
 }
 

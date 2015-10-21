@@ -10,18 +10,11 @@
             z-index: -1;
         }
 
-        .title {
-            color: #AD8F8F;
-        }
-
-        #detail-btn {
-            margin-top: 15px;
-            background: #FDB214;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            padding: 4px 20px;
+        #allmap {
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+            height: 100%;
         }
     </style>
     <link href="css/default.css" type="text/css" rel="stylesheet">
@@ -29,8 +22,19 @@
 </head>
 
 <body>
-<img src="img/2.png" style="display:none"/>
-<section class="screen current">
+<section class="screen current" style="transition: none;">
+    <div class="first-page" style="display: none">
+        <div class="title">WELCOME</div>
+        <div style="color:yellow" id="invite">邀 请 函</div>
+        <div style="margin-top: 20px" class="content">
+            温盛章&高超<br/>
+            2015.11.14<br/>
+            17:30<br/>
+            Thanks for you
+        </div>
+    </div>
+</section>
+<section class="screen">
     <div id="content">
         <div id="loveHeart">
             <canvas id="horse"></canvas>
@@ -40,53 +44,91 @@
         </div>
     </div>
     <div>
-        <h2 class="title">温盛章&amp;高超</h2>
+        <h2 class="name">温盛章&amp;高超</h2>
 
-        <div>2015年11月14日 晚 @ 瑞安市葡萄园大酒店</div>
+        <div>我们一起走过了</div>
+        <div id="elapseClock"></div>
+        <div id="married">Then we get married.</div>
         <div>
-            <button id="detail-btn">详情</button>
+            <button id="detail-btn">一起见证</button>
         </div>
     </div>
 </section>
-<section class="screen">
+<section class="screen" style="background: #ED3B57">
     <ul class="image-list">
-        <li style="width: 233px; height: 176px; top: 20px; z-index: 2; transform: rotateZ(7deg)  translateX(-50%);">
+        <li style="width: 233px; height: 176px; margin-top: 1.5rem; z-index: 2; transform: rotateZ(7deg) ">
             <div class="element-box" element-anim=""
                  style="top: 20px; left: 58px; z-index: 2; width: 100%; height: 100%; transform: none; opacity: 1; color: rgb(103, 103, 103); border: 8px solid rgb(255, 255, 255); padding-bottom: 0px; padding-top: 0px; line-height: 1; border-radius: 0px; box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 0px; animation: rollIn 3s ease 0s 1 both;">
                 <div class="element-box-contents" style="width: 100%; height: 100%;">
                     <img id="9733357309" ctype="4"
-                         src="http://res.eqxiu.com/group2/M00/7E/DC/yq0KXlYl_8-AON5fAAJ0GyQxVZc100.jpg"
+                         src="img/3.jpg"
                          style="width: 264px; height: 176px; margin-top: 0px; margin-left: -15.5px;"/>
                 </div>
             </div>
         </li>
         <li comp-drag="" comp-rotate="" class="comp-resize comp-rotate inside wsite-image" id="inside_8579349539"
             num="1" ctype="4" comp-resize=""
-            style="width: 233px; height: 176px; top: 125px; z-index: 4; transform: rotateZ(349deg) translateX(-50%);">
+            style="width: 233px; height: 176px; z-index: 4; transform: rotateZ(349deg)">
             <div class="element-box" element-anim=""
                  style="top: 125px; left: 52px; z-index: 4; width: 100%; height: 100%; transform: none; opacity: 1; color: rgb(103, 103, 103); border: 8px solid rgb(255, 255, 255); padding-bottom: 0px; padding-top: 0px; line-height: 1; border-radius: 0px; box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 0px; animation: rollIn 3s ease 1s 1 both;">
                 <div class="element-box-contents" style="width: 100%; height: 100%;">
                     <img id="8579349539" ctype="4"
-                         src="http://res.eqxiu.com/group2/M00/7F/72/yq0KX1Yl_52AZ5AQAAF27mzgrbQ570.jpg"
+                         src="img/4.jpg"
                          style="width: 264px; height: 176px; margin-top: 0px; margin-left: -15.5px;">
                 </div>
             </div>
         </li>
         <li comp-drag="" comp-rotate="" class="comp-resize comp-rotate inside wsite-image" id="inside_1424865898"
             num="1" ctype="4" comp-resize=""
-            style="width: 233px; height: 176px; top: 270px; z-index: 5; transform: rotateZ(9deg)  translateX(-50%);">
+            style="width: 233px; height: 176px; top: 270px; z-index: 5; transform: rotateZ(9deg)">
             <div class="element-box" element-anim=""
                  style="top: 270px; left: 55px; z-index: 5; width: 100%; height: 100%; transform: none; opacity: 1; color: rgb(103, 103, 103); border: 8px solid rgb(255, 255, 255); padding-bottom: 0px; padding-top: 0px; line-height: 1; border-radius: 0px; box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 0px; animation: rollIn 3s ease 2s 1 both;">
                 <div class="element-box-contents" style="width: 100%; height: 100%;">
                     <img id="1424865898" ctype="4"
                          class="element comp_image editable-image"
-                         src="http://res.eqxiu.com/group2/M00/7E/D9/yq0KXlYl_7uAM-gVAAJr_lnU3GM787.jpg"
+                         src="img/5.jpg"
+                         style="width: 264px; height: 176px; margin-top: 0px; margin-left: -15.5px;">
+                </div>
+            </div>
+        </li>
+
+        <li comp-drag="" comp-rotate="" class="comp-resize comp-rotate inside wsite-image"
+            num="1" ctype="4" comp-resize=""
+            style="width: 233px; height: 176px; top: 270px; z-index: 5; transform: rotateZ(-22deg)">
+            <div class="element-box" element-anim=""
+                 style="top: 270px; left: 55px; z-index: 5; width: 100%; height: 100%; transform: none; opacity: 1; color: rgb(103, 103, 103); border: 8px solid rgb(255, 255, 255); padding-bottom: 0px; padding-top: 0px; line-height: 1; border-radius: 0px; box-shadow: rgba(0, 0, 0, 0.2) 3px 5px 0px; animation: rollIn 3s ease 3s 1 both;">
+                <div class="element-box-contents" style="width: 100%; height: 100%;">
+                    <img class="element comp_image editable-image"
+                         src="img/6.png"
                          style="width: 264px; height: 176px; margin-top: 0px; margin-left: -15.5px;">
                 </div>
             </div>
         </li>
     </ul>
 </section>
+<section class="screen" style="background: #ED3B57">
+    <div class="half-screen">
+        <div id="allmap"></div>
+    </div>
+    <div class="info">
+        <div>婚礼日期:&nbsp;<span class="content">2015年11月14日</span></div>
+        <div>开始时间:&nbsp;<span class="content">下午 5:30</span></div>
+        <div style="margin-top: 40px;">婚礼地址:&nbsp;<span>瑞安市葡萄园大酒店</span></div>
+        <div><span class="content">一楼宴会厅</span></div>
+    </div>
+</section>
+<div class="arrow">
+    <div class="pre-wrap">
+        <div class="pre-box1">
+            <div class="pre1"></div>
+        </div>
+        <div class="pre-box2">
+            <div class="pre2"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nV1ZsaPSCQBoqekjqZgrST1P"></script>
+<script type="text/javascript" src="js/hammer.js"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="js/garden.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
@@ -101,14 +143,10 @@
     together.setSeconds(0);
     together.setMilliseconds(0);
 
-    $(function () {
-        startHeartAnimation();
-    });
-
-    //		timeElapse(together);
-    //		setInterval(function () {
-    //			timeElapse(together);
-    //		}, 500);
+    timeElapse(together);
+    setInterval(function () {
+        timeElapse(together);
+    }, 500);
 
 
     // adjustCodePosition();

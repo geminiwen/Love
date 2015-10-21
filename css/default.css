@@ -1,10 +1,20 @@
+@font-face {
+    font-family: digit;
+    src: url('../digital-7_mono.ttf') format("truetype");
+}
+
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background: #FFFFEE;
     font-size: 12px;
-    overflow: auto;
+    overflow: hidden;
     text-align: center;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 #content {
@@ -14,9 +24,18 @@ body {
 .screen {
     width: 100%;
     height: 100%;
+    overflow: scroll;
     position: absolute;
     display: none;
     text-align: center;
+    background: #FFFFEE;
+}
+
+#married {
+    font-family: digit;
+    display: none;
+    color: #B750DC;
+    font-size: 18px;
 }
 
 .current {
@@ -34,17 +53,10 @@ body {
 }
 
 #elapseClock {
-    text-align: right;
-    font-size: 18px;
+    font-size: 13px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-#words {
-    font-family: "sans-serif";
-    width: 500px;
-    font-size: 24px;
-    color: #666;
+    font-family: monospace;
 }
 
 #messages {
@@ -52,66 +64,25 @@ body {
 }
 
 #elapseClock .digit {
-    font-family: "digit";
-    font-size: 36px;
-}
-
-#loveu {
-    padding: 5px;
-    font-size: 22px;
-    margin-top: 80px;
-    margin-right: 120px;
-    text-align: right;
-    display: none;
-}
-
-#loveu .signature {
-    margin-top: 10px;
-    font-size: 20px;
-    font-style: italic;
+    font-family: monospace;
+    font-size: 18px;
 }
 
 #clickSound {
     display: none;
 }
 
-#code {
-    float: left;
-    width: 440px;
-    height: 400px;
-    color: #333;
-    font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
-    font-size: 12px;
+.name {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #AD8F8F;
+    font-family: monospace;
 }
 
-#code .string {
-    color: #2a36ff;
-}
-
-#code .keyword {
-    color: #7f0055;
-    font-weight: bold;
-}
-
-#code .placeholder {
-    margin-left: 15px;
-}
-
-#code .space {
-    margin-left: 7px;
-}
-
-#code .comments {
-    color: #3f7f5f;
-}
-
-#errorMsg {
+ul {
+    margin: 0px;
     width: 100%;
-    text-align: center;
-    font-size: 24px;
-    position: absolute;
-    top: 100px;
-    left: 0px;
+    padding: 0;
 }
 
 .image-list {
@@ -119,14 +90,73 @@ body {
 }
 
 .image-list li {
-    position: absolute;
+    margin: -50px auto;
     list-style: none;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .image-list .element-box {
     overflow: hidden;
+}
+
+.half-screen {
+    height: 50%;
+}
+
+#typer {
+    text-align: left;
+    margin: 20px 10px;
+    word-break: break-all;
+}
+
+#detail-btn {
+    margin: 20px 0;
+    background: #876AD4;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
+    padding: 4px 20px;
+    display: none;
+}
+
+.first-page {
+    background: url("../img/bg.jpg");
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    overflow: hidden;
+    color: white;
+}
+
+.first-page .title {
+    color: white;
+    margin-top: 73px;
+    font-size: 33px;
+}
+
+#invite {
+    color: yellow;
+    margin-top: 20px;
+    font-size: 50px;
+}
+
+.content {
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.info {
+    margin-top: 60px;
+    font-size: 18px;
+    color: white;
+    line-height: 20px;
+    font-family: 'Microsoft Yahei', Tahoma, Helvetica, Arial, sans-serif;;
+}
+
+.info .content {
+    color: orange;
+    font-size: inherit;
 }
 
 @keyframes rollIn {
@@ -138,6 +168,70 @@ body {
     100% {
         opacity: 1;
         -webkit-transform: none;
-        transform: none
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.arrow {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 150;
+    width: 24px;
+    height: 14px;
+    margin-left: -7px;
+}
+
+.pre-wrap {
+    width: 24px;
+    height: 14px;
+    position: relative;
+    animation: start 1.5s infinite ease-in-out;
+}
+
+.pre1, .pre2 {
+    background-color: #fff;
+    width: 14px;
+    height: 5px;
+    border-radius: 2px;
+    position: absolute;
+    box-shadow: 1px -1px 1px #646464;
+    top: 5px;
+}
+
+.pre-box1, .pre-box2 {
+    height: 15px;
+    width: 11px;
+    position: absolute;
+    top: -5px;
+    overflow: hidden;
+}
+
+.pre-box2 {
+    left: 10px;
+}
+
+.pre1 {
+    transform: rotate(130deg);
+    left: 1px;
+}
+
+.pre2 {
+    left: -4.5px;
+    transform: rotate(50deg);
+}
+
+@keyframes start {
+    0%, 30% {
+        opacity: 0;
+        transform: translate(0, 10px)
+    }
+    60% {
+        opacity: 1;
+        transform: translate(0, 0)
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, -8px)
     }
 }
