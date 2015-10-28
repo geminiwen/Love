@@ -57,7 +57,7 @@ $(function () {
                 $('.pre-wrap').hide();
                 break;
             }
-            case 4: {
+            case 5: {
                 $('.pre-wrap').hide();
                 map.centerAndZoom(point, 18);  // 初始化地图,设置中心点坐标和地图级别
                 break;

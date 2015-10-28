@@ -6,13 +6,13 @@ var points = [];
 
 $(function () {
     // setup garden
-	$loveHeart = $("#loveHeart");
+	var $loveHeart = $("#loveHeart");
     $garden = $("#garden");
     $horse = $('#horse');
 
     gardenCanvas = $garden[0];
-	gardenCanvas.width = $("#loveHeart").width();
-    gardenCanvas.height = $("#loveHeart").height();
+	gardenCanvas.width = $loveHeart.width();
+    gardenCanvas.height = $loveHeart.height();
 
     horseCanvas = $horse[0];
     horseCanvas.width = gardenCanvas.width;
@@ -25,10 +25,6 @@ $(function () {
     horseCtx = horseCanvas.getContext("2d");
 
 	
-	$("#content").css("width", $loveHeart.width() + $("#code").width());
-	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
-	$("#content").css("margin-top", 5);
-
     // renderLoop
     setInterval(function () {
         garden.render();
@@ -58,6 +54,7 @@ function drawBackground() {
 	var cheight = gardenCanvas.height;
 	
 	img.onload = function () {
+		var scale = Math.min((cwidth / img.width), (cheight / img.height));
 		var scale = Math.min((cwidth / img.width), (cheight / img.height));
 		var alpha = 0.1;
 
@@ -140,20 +137,9 @@ function timeElapse(date){
 }
 
 function showMessages() {
-	adjustWordsPosition();
 	// $('#messages').fadeIn(5000, function() {
 	// 	showLoveU();
 	// });
-}
-
-function adjustWordsPosition() {
-	$('#words').css("position", "absolute");
-	$('#words').css("top", $("#garden").position().top + 195);
-	$('#words').css("left", $("#garden").position().left + 70);
-}
-
-function adjustCodePosition() {
-	$('#code').css("margin-top", ($("#garden").height() - $("#code").height()) / 2);
 }
 
 function showLoveU() {
