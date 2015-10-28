@@ -87,11 +87,11 @@ ul {
 
 .image-list {
     text-align: center;
+    list-style: none;
 }
 
-.image-list li {
+.image-list-1 li {
     margin: -50px auto;
-    list-style: none;
 }
 
 .image-list .element-box {
@@ -167,7 +167,7 @@ ul {
     }
     100% {
         opacity: 1;
-        -webkit-transform: none;
+        -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
 }
