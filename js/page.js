@@ -35,9 +35,11 @@ $(function () {
             });
         $('.current').css({
             "transition": "transform 1s linear",
+            "-webkit-transition": "-webkit-transform 1s linear",
             "transform": "translateY(-100%)",
+            "-webkit-transform": "translateY(-100%)",
             "z-index": 1
-        }).on("transitionend", function () {
+        }).on("webkitTransitionEnd", function () {
             $(this).removeClass("current").hide();
             $($next).addClass("current")
                 .css({
